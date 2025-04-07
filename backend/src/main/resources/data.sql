@@ -1,0 +1,1 @@
+INSERT INTO task(title, description, status, created_at) VALUES ('title1', 'description1', 'ongoing', '2024-01-01 08:23:40'),('title2','description2','ongoing', '2024-02-02 08:23:40'),('title3', 'description3', 'completed', '2024-02-03 08:23:40'),('title4', 'description4', 'completed', '2024-02-04 08:23:40');

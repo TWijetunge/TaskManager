@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-7">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Task No.</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Created At</th>
+          <th>Modify</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of taskList; let taskid = index">
+          <td>{{ taskid + 1 }}</td>
+          <td>{{ task.title }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.status }}</td>
+          <td>{{ task.createdAt | date: 'medium' }}</td>
+          <td>
+            <button class="btn btn-info" (click)="editTask(task)">Update</button>
+            <button class="btn btn-danger" (click)="removeTask(task.id)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">
+        {{ isUpdating ? 'Update Task' : 'Add Task' }}
+      </div>
+      <div class="card-body">
+        <div class="col">
+          <!-- Title -->
+          <div class="col-6">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              [(ngModel)]="title"
+              required
+              maxlength="30"
+              #titleInput="ngModel"
+            />
+            <div class="text-danger" *ngIf="titleInput.invalid && titleInput.touched">
+              <small *ngIf="titleInput.errors?.['required']">Title is required.</small>
+              <small *ngIf="titleInput.errors?.['maxlength']">Max 30 characters allowed.</small>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="col-6 mt-2">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              name="description"
+              [(ngModel)]="description"
+              required
+              maxlength="50"
+              #descInput="ngModel"
+            />
+            <div class="text-danger" *ngIf="descInput.invalid && descInput.touched">
+              <small *ngIf="descInput.errors?.['required']">Description is required.</small>
+              <small *ngIf="descInput.errors?.['maxlength']">Max 50 characters allowed.</small>
+            </div>
+          </div>
+
+          <!-- Status -->
+          <div class="col-6 mt-2">
+            <label for="status">Status</label>
+            <select
+              class="form-control"
+              id="status"
+              name="status"
+              [(ngModel)]="status"
+              required
+              #statusInput="ngModel"
+            >
+              <option value="" disabled>Select status</option>
+              <option value="ongoing">Ongoing</option>
+              <option value="completed">Completed</option>
+            </select>
+            <div class="text-danger" *ngIf="statusInput.invalid && statusInput.touched">
+              <small>Status is required.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="row mt-3">
+          <div class="col-6">
+            <button
+              class="btn btn-success"
+              (click)="isUpdating ? updateTask() : addTask()"
+              [disabled]="!title || !description || !status || title.length > 30 || description.length > 50"
+            >
+              {{ isUpdating ? 'Update' : 'Add' }}
+            </button>
+            <button
+              class="btn btn-warning"
+              (click)="clearForm()"
+              [disabled]="!title && !description && !status"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
