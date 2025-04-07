@@ -21,3 +21,4 @@ Task Manager App
   
 
 ![image alt](https://github.com/TWijetunge/TaskManager/blob/3469b35b2a8d0e321b651c2c1a4c089bb3f23796/Image1.png)
+![image alt](https://github.com/TWijetunge/TaskManager/blob/1d8a9240d4cf8a8aca72eb8a03a72f2cfa282a9e/Image2.png)
