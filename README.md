@@ -20,4 +20,4 @@ Task Manager App
    1. The server contains embedded h2 database as a dependency which has been used for demonstration purpose only.
   
 
-
+![image alt](https://github.com/TWijetunge/TaskManager/blob/3469b35b2a8d0e321b651c2c1a4c089bb3f23796/Image1.png)
